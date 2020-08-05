@@ -29,6 +29,7 @@ CREATE TABLE "airline_company" (
 )
 
 CREATE TABLE "extra_permitted_route_operators" (
+    "id" int NOT NULL PRIMARY KEY IDENTITY(1,1),
     "airline_company_id" int NOT NULL,
     "route_id" int NOT NULL,
     FOREIGN KEY (airline_company_id) REFERENCES airline_company(id),

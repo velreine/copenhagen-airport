@@ -1,4 +1,5 @@
 ﻿using System;
+using Entity_Framework_6_Database_first.Models;
 
 namespace Entity_Framework_6_Database_first
 {
@@ -12,8 +13,19 @@ namespace Entity_Framework_6_Database_first
             //Scaffold-DbContext "Server=.\SQLExpress;Database=SchoolDB;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
             
             // Same command with EF Core Tools CLI
-            //dotnet ef dbcontext Scaffold "Server=<servername>,1433;Initial Catalog=<dbName>;Persist Security Info=False;User ID=<userID>;Password=<password>;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"Microsoft.EntityFrameworkCore.SqlServer -o <directory name>
-            
+            //dotnet ef dbcontext Scaffold "Server=localhost,1433;Initial Catalog=copenhagen_airport;User ID=sa;Password=\!supercomplex12345;" Microsoft.EntityFrameworkCore.SqlServer -o Models
+
+            using (var ctx = new copenhagen_airportContext())
+            {
+                foreach (Airport airport in ctx.Airport)
+                {
+                    Console.WriteLine($"IATA: {airport.Iata}, ID: {airport.Id}, Name: {airport.Name}");
+                }
+            }
+
+            Console.ReadKey();
+
+
         }
     }
 }
