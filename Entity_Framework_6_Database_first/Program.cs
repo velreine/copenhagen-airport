@@ -17,12 +17,15 @@ namespace Entity_Framework_6_Database_first
 
             using (var ctx = new copenhagen_airportContext())
             {
+                Console.WriteLine("---Currently Existing Airports---");
+                
                 foreach (Airport airport in ctx.Airport)
                 {
-                    Console.WriteLine($"IATA: {airport.Iata}, ID: {airport.Id}, Name: {airport.Name}");
+                    Console.WriteLine($"iata: {airport.Iata}, name: {airport.Name}, id: {airport.Id}");
                 }
             }
-
+            
+            
             Console.ReadKey();
 
 
